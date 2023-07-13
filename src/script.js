@@ -86,7 +86,7 @@ const lavaMaterial = new THREE.MeshStandardMaterial({
   normalMap: lavaNormal,
   aoMap: lavaOcc,
   roughness: 0.1,
-  roughnessMap: lavaMask,
+  roughnessMap: lavaRoughness,
   alphaMap: lavaMask,
 });
 
