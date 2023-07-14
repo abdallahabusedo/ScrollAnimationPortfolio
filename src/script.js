@@ -43,16 +43,6 @@ const sizes = {
   height: window.innerHeight,
 };
 
-// Resize Listener
-window.addEventListener("resize", () => {
-  sizes.width = window.innerWidth;
-  sizes.height = window.innerHeight;
-  camera.aspect = sizes.width / sizes.height;
-  camera.updateProjectionMatrix();
-  renderer.setSize(sizes.width, sizes.height);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-});
-
 // Mesh Material
 // Water material
 const waterMaterial = new THREE.MeshPhongMaterial({
@@ -128,6 +118,25 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.z = 6;
 cameraGroup.add(camera);
 
+// Resize Listener
+window.addEventListener("resize", () => {
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
+  console.log(sizes.width);
+  if (sizes.width < 600) {
+    mesh1.position.x = 0;
+    mesh2.position.x = 0;
+    mesh3.position.x = 0;
+  } else {
+    mesh1.position.x = -2;
+    mesh2.position.x = 2;
+    mesh3.position.x = -2;
+  }
+  camera.aspect = sizes.width / sizes.height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+});
 /**
  * scroll
  */
